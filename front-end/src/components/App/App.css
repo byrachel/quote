@@ -1,0 +1,45 @@
+/* Font imports */
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/assets/fonts/Roboto-Light.ttf");
+    font-weight: 300;
+  }
+  
+  @font-face {
+    font-family: "Roboto";
+    src: url("/assets/fonts/Roboto-MediumItalic.ttf");
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Roboto";
+    src: url("/assets/fonts/Roboto-Bold.ttf");
+    font-weight: bold;
+  }
+  
+  html,
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .title {
+    padding-top: 10px;
+    margin: 0;
+    color: lightslategrey;
+    font-weight: 300;
+    font-size: 32px;
+  }
+
+  .o {
+      color: salmon;
+      font-style: italic;
+      font-size: 40px;
+  }
+
+  .nav {
+    float: right;
+    padding-top: 15px;
+    margin: 0;
+  }

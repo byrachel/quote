@@ -1,0 +1,16 @@
+.quote-form {
+    text-align: center;
+    color: grey;
+    font-size: 14px;
+}
+
+.input-quote {
+    padding: 10px;
+    margin: 5px;
+    width: 250px;
+}
+
+.input-author {
+    padding: 10px;
+    margin: 5px;
+}
