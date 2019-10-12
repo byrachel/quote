@@ -12,6 +12,7 @@ import nav from './nav.png';
 /* Component import */
 import Post from '../Post/Post';
 import Form from '../Form/Form';
+//import Login from '../Login/Login';
 
 /* App component */
 class App extends Component {
@@ -19,31 +20,35 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      navButtonClick: false
     }
   }
 
-  componentDidMount() {
-
-  var options = {
-    headers: {
-      "X-Requested-With": "XMLHttpRequest"
-    }
+  _displayLogin = () => {
+    this.setState((state) => ({ navButtonClick: true }))
   }
 
-  fetch("http://localhost:8080", options) 
-    /* promesse / Une promesse renvoit toujours une promesse */
-    .then(res => (res.json()))
-    /* 2 réponses callback */
-    .then(
-    /* result est là pour nommer la promesse, c'est juste un nom */
-      (result) => {
-        console.log(result);
-      },
-      (error) => {
-      }
-    )
-  }
+  //componentDidMount() {
+
+  // var options = {
+  //   headers: {
+  //     "X-Requested-With": "XMLHttpRequest"
+  //   }
+  // }
+
+  // fetch("http://localhost:8080", options) 
+  //   /* promesse / Une promesse renvoit toujours une promesse */
+  //   .then(res => (res.json()))
+  //   /* 2 réponses callback */
+  //   .then(
+  //   /* result est là pour nommer la promesse, c'est juste un nom */
+  //     (result) => {
+  //       console.log(result);
+  //     },
+  //     (error) => {
+  //     }
+  //   )
+ //}
 
   render() {
     return (
@@ -53,10 +58,19 @@ class App extends Component {
               <h1 className="title">' Qu<span className="o">o</span>te '</h1>
             </div>
             <div className="col-md-6">
-              <img src={nav} className="nav" />
+
+              <button className="nav" onClick={this._displayLogin}>
+                <img src={nav} alt="menu" />
+              </button>
+              
             </div>
           </div>
+          <div>
+          {(this.state.navButtonClick === true) &&
           <Form />
+          }
+          </div>
+          
           <div className="row">
             <div className="col-md-4 quoteList">
               <Post postContent="L'imperfection est beauté, la folie est génie et il vaut mieux être totalement ridicule que totalement ennuyeux." author="Marilyn Monroe"/>

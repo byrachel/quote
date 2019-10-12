@@ -39,6 +39,7 @@
   }
 
   .nav {
+    border: none;
     float: right;
     padding-top: 15px;
     margin: 0;
