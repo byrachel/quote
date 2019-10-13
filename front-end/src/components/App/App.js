@@ -7,12 +7,16 @@ import React, { Component } from 'react';
 
 /* Styles imports */
 import './App.css';
-import nav from './nav.png';
+
+/* Images imports */
+import account_btn from './account.png';
+import search_btn from './search.png';
+import quote_btn from './quote.png';
 
 /* Component import */
 import Post from '../Post/Post';
 import Form from '../Form/Form';
-//import Login from '../Login/Login';
+import Login from '../Login/Login';
 
 /* App component */
 class App extends Component {
@@ -20,12 +24,28 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navButtonClick: false
+      accountButtonClick: false,
+      quoteButtonClick: false,
+      searchButtonClick: false
     }
   }
-
+  
   _displayLogin = () => {
-    this.setState((state) => ({ navButtonClick: true }))
+    if(this.state.accountButtonClick === false) {
+      this.setState((state) => ({ accountButtonClick: true }))
+    }
+    else {
+      this.setState((state) => ({ accountButtonClick: false }))
+    } 
+  }
+
+  _displayQuoteForm = () => {
+    if(this.state.quoteButtonClick === false) {
+      this.setState((state) => ({ quoteButtonClick: true }))
+    }
+    else {
+      this.setState((state) => ({ quoteButtonClick: false }))
+    } 
   }
 
   //componentDidMount() {
@@ -52,38 +72,58 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
+
+        <div className="container">
           <div className="row">
+
             <div className="col-md-6">
               <h1 className="title">' Qu<span className="o">o</span>te '</h1>
             </div>
-            <div className="col-md-6">
-
-              <button className="nav" onClick={this._displayLogin}>
-                <img src={nav} alt="menu" />
+            <div className="col-md-6 nav-btn">
+              <button className="btn" onClick={this._displayLogin}>
+                <img src={account_btn} alt="my account" />
               </button>
-              
+              <button className="btn" onClick={this._displayQuoteForm}>
+                <img src={quote_btn} alt="quote" />
+              </button>
+              <button className="btn" onClick={this._displaySearch}>
+                <img src={search_btn} alt="search" />
+              </button>
             </div>
+
           </div>
-          <div>
-          {(this.state.navButtonClick === true) &&
-          <Form />
-          }
+        </div>
+
+          <div className="container-fluid">
+
+              <h3 className="smalltitle center">Pour tous les fans de citations</h3>
+
+              {(this.state.accountButtonClick === true) &&
+              <Login />
+              }
+
+              {(this.state.quoteButtonClick === true) &&
+              <Form />
+              }
+
           </div>
-          
+
+        <div className="container">
           <div className="row">
             <div className="col-md-4 quoteList">
               <Post postContent="L'imperfection est beauté, la folie est génie et il vaut mieux être totalement ridicule que totalement ennuyeux." author="Marilyn Monroe"/>
             </div>
             <div className="col-md-4 quoteList">
               <Post postContent="Soyez insatiables, soyez fous. C’est vrai que ça n’est pas dans le statu quo qu’on se préparera un avenir meilleur. Ni la frilosité et les certitudes qui nous permettront d’avancer." author="Steve Jobs"/>
-          </div>
-          <div className="col-md-4 quoteList">
+            </div>
+            <div className="col-md-4 quoteList">
               <Post postContent="Quoi que tu rêves d'entreprendre, commence-le. L'audace a du génie, du pouvoir, de la magie." author="Goethe"/>
+            </div>
           </div>
-      </div>
-      </div>
+        </div>
 
+      </div>
     );
   }
 }
